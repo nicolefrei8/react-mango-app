@@ -43,3 +43,7 @@ li {
   line-height: 1;
   top: -15px;
 }
+.weatherInfo {
+  position: relative;
+  bottom: -18px;
+}
