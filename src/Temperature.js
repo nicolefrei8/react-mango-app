@@ -18,7 +18,7 @@ export default function Temperature(props) {
         <span className="temperature">{props.celsius}</span>
         <span className="unit">
           °C /
-          <a href="" onClick={toFahr}>
+          <a href="toFahr" onClick={toFahr}>
             °F
           </a>{" "}
         </span>
@@ -29,7 +29,7 @@ export default function Temperature(props) {
       <span>
         <span className="temperature">{fahrTemp()}</span>
         <span className="unit">
-          <a href="" onClick={toCelsius}>
+          <a href="toCelsius" onClick={toCelsius}>
             °C /
           </a>
           °F
