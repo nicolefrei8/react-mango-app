@@ -1,0 +1,21 @@
+.WeatherForecast {
+  position: relative;
+  bottom: -18px;
+  text-align: center;
+}
+.ForecastDay {
+  margin-bottom: 10px;
+}
+
+.ForecastTemp {
+  margin-top: 10px;
+}
+.WeatherMin {
+  position: relative;
+  right: -2px;
+  opacity: 0.6;
+}
+.WeatherMax {
+  position: relative;
+  left: -2px;
+}

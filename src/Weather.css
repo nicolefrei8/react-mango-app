@@ -1,4 +1,4 @@
-.Body2 {
+.Body {
   font-family: arial, sans-serif;
   border: 1px solid #dadde1;
   padding: 16px;
@@ -24,13 +24,13 @@ li {
   line-height: 19px;
   list-style: none;
 }
-canvas {
-  position: relative;
-  bottom: -22px;
-}
+
 a {
   text-decoration: none;
   color: rgb(135, 135, 135);
+}
+.TempDetails {
+  padding-top: 40px;
 }
 .temperature {
   font-weight: bold;
@@ -41,18 +41,16 @@ a {
   font-weight: 400;
   margin-left: 15px;
   margin-top: 50px;
-  position: relative;
-  bottom: -18px;
 }
 .unit {
   color: rgb(33, 33, 33);
   font-size: 16px;
   font-weight: 400;
-  position: relative;
+
   line-height: 1;
   top: -15px;
 }
 .weatherInfo {
   position: relative;
-  bottom: -24px;
+  bottom: -6px;
 }
