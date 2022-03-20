@@ -1,29 +1,46 @@
 import axios from "axios";
+import React, { useState, useEffect } from "react";
 import "./Forecast.css";
-import WeatherIcon from "./WeatherIcon";
+import ForecastDay from "./ForecastDay";
 
 export default function Forecast(props) {
-  function handleResponse(response) {}
-  console.log(props);
-  let apiKey = "72bb9dab46b9ec3d65f423c63f27a9b8";
-  let longitude = props.coord.lon;
-  let latitude = props.coord.lat;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  const [loaded, setLoaded] = useState(false);
+  const [forecast, setForecast] = useState(null);
 
-  axios.get(apiUrl).then(handleResponse);
+  useEffect(() => {
+    setLoaded(false);
+  }, [props.coord]);
 
-  return (
-    <div className="WeatherForecast">
-      <div className="row">
-        <div className="col">
-          <div className="ForecastDay"> Wed </div>
-          <WeatherIcon code="01d" size="35" className="SmallIcon" />
-          <div className="ForecastTemp">
-            <span className="WeatherMax">13⁰</span>
-            <span className="WeatherMin">10⁰</span>{" "}
-          </div>
-        </div>{" "}
+  function handleResponse(response) {
+    setForecast(response.data.daily);
+    setLoaded(true);
+  }
+
+  if (loaded) {
+    return (
+      <div className="WeatherForecast">
+        <div className="row">
+          {forecast.map(function (dailyForecast, index) {
+            if (index < 5) {
+              return (
+                <div className="col">
+                  <ForecastDay data={dailyForecast} />
+                </div>
+              );
+            } else {
+              return null;
+            }
+          })}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    let apiKey = "72bb9dab46b9ec3d65f423c63f27a9b8";
+    let longitude = props.coord.lon;
+    let latitude = props.coord.lat;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+
+    axios.get(apiUrl).then(handleResponse);
+    return null;
+  }
 }
